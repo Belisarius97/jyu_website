@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Home = () => (
-  <home>
+  <home className="transition-block">
     <p>
       placeholder for home content
     </p>

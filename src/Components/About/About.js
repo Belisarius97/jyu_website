@@ -1,10 +1,10 @@
 import React from 'react';
 
 const About = () => (
-  <div>
+  <about className="transition-block">
       <h2>About</h2>
       <p> Placeholder for the about page. Work in progress, much like myself. </p>
-  </div>
+  </about>
 )
 
 export default About;

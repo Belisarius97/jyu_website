@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Photography = () => (
-  <photography>
+  <photography className ="transition-block">
     <div>
       <p>
         Placeholder; build an elegant animated photo view here

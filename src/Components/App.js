@@ -17,12 +17,13 @@ const App = () => (
           atEnter={{ scale: 0.8, opacity: 0,}}
           atLeave={{ scale: spring(0.8, 330, 15), opacity: spring(0, 330, 15)}}
           atActive={{ scale: spring(1), opacity: 1}}
-          mapStyles={styles => ({opacity: styles.opacity, transform: `scale(${styles.scale})`, })}          
+          mapStyles={styles => ({opacity: styles.opacity, transform: `scale(${styles.scale})`, })}     
+          className="transition-anim"
         >
           <Switch key = {location.key} location={location}>
             <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/photography" component={Photography} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/photography" component={Photography} />
           </Switch>  
       </RouteTransition>
       );
