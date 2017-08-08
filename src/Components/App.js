@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link, Switch } from 'react-router-dom'
 import { RouteTransition } from 'react-router-transition';
+import spring from 'react-motion/lib/spring'
 import Home from './Home/Home.js';
 import About from './About/About.js';
 import Photography from './Photography/Photography.js';
@@ -13,11 +14,10 @@ const App = () => (
       return (
         <RouteTransition  
           pathname={location.pathname} 
-          atEnter={{ translateX: 100 }}
-          atLeave={{ translateX: -100 }}
-          atActive={{ translateX: 0 }}
-          mapStyles={styles => ({ transform: `translateX(${styles.translateX}%)` })}          
-          className="transition-anim"
+          atEnter={{ scale: 0.8, opacity: 0,}}
+          atLeave={{ scale: spring(0.8, 330, 15), opacity: spring(0, 330, 15)}}
+          atActive={{ scale: spring(1), opacity: 1}}
+          mapStyles={styles => ({opacity: styles.opacity, transform: `scale(${styles.scale})`, })}          
         >
           <Switch key = {location.key} location={location}>
             <Route exact path="/" component={Home} />
