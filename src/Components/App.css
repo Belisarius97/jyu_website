@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.Nav-header {
+  background-color: #222;
+  height: 200px;
+  padding: 20px;
+  margin-top: -20px;
+  color: white;
+  background-image: url('../Assets/crystaldroplets-web.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 54%;
+  text-align: center; /*why doesn't name line up with the rest?*/
+  vertical-align: middle;
+}
+
+.Title {
+  padding: 25px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Nav-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+/*Link styles --------------------------------------------------- */
+a {
+
+}
+
+a:link {
+  display:block;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 50px;
+}
+
+a:visited {
+  color: white;
+}
+
+a:focus, a:hover {
+  /*add glow here*/
+}
+
+a:active {
+  /*animation?*/
+}
+
+.Title {
+  font-size: 49px;
+}
