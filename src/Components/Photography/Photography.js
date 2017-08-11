@@ -4,7 +4,7 @@ const Photography = () => (
   <photography className ="transition-block">
     <div>
       <p>
-        Placeholder; build an elegant animated photo view here
+        Under construction; check back soon!
       </p>
     </div>
   </photography>

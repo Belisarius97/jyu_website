@@ -3,7 +3,7 @@ import { Route, NavLink, Switch } from 'react-router-dom'
 import { RouteTransition } from 'react-router-transition';
 import spring from 'react-motion/lib/spring'
 import Home from './Home/Home.js';
-import About from './About/About.js';
+import Resume from './Resume/Resume.js';
 import Photography from './Photography/Photography.js';
 import './App.css';
 
@@ -24,7 +24,7 @@ const App = () => (
         >  
           <Switch key = {location.key} location={location} className="temp">
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
+            <Route exact path="/resume" component={Resume} />
             <Route exact path="/photography" component={Photography} />
           </Switch>  
       </RouteTransition>
@@ -47,16 +47,19 @@ const NavList = () => (
     <ul className="Nav-list">
       <li><NavLink 
         to='/'
+        className="nav"
         exact activeClassName="selected"
       >home</NavLink></li>
       <li><NavLink 
         to='/photography'
+        className="nav"
         activeClassName="selected"
       >photography</NavLink></li>
       <li><NavLink 
-        to='/about'
+        to='/resume'
+        className="nav"
         activeClassName="selected"
-      >about</NavLink></li>
+      >resume</NavLink></li>
     </ul>
     <routes />
   </nav>
