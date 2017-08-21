@@ -10,11 +10,11 @@ const bio = `I'm fond of curling up with tea and a good book, going on a
 
 const Home = () => (
   <home className="transition-block">
-    <p>Hi.</p>
     <div>
       <img className="profilePic" src={profPic} alt={"ProfilePicture"} height={imgDiam} width={imgDiam} />
     </div>
     <br/>
+    <h3>About me:</h3>
     <p>
       {bio}
     </p>

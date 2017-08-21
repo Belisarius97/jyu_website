@@ -7,7 +7,7 @@ import Resume from './Resume/Resume.js';
 import Photography from './Photography/Photography.js';
 import './App.css';
 
-const popConfig = {stiffness: 330, damping: 15};
+const popConfig = {stiffness: 360, damping: 25};
 
 const App = () => (
   <home className="App">

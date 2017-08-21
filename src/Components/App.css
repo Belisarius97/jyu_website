@@ -56,7 +56,7 @@ a.nav:active {
   transition: 250ms ease 0s;
 }
 
-a.nav:hover, a:hover { 
+a.nav:hover { 
   text-shadow: 0px 0px 5px white, 0px 0px 20px white;
   transition: 250ms linear 0s;
 }
@@ -96,4 +96,9 @@ p {
 .profilePic {
   text-size: 16px;
   border-radius: 50%;
+}
+
+.object {
+  height: 100%;
+  width: 100%;
 }
