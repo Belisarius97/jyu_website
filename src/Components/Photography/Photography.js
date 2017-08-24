@@ -32,7 +32,7 @@ class Photography extends React.Component {
   }
   
   updateWidth() {
-    this.setState({width: window.InnerWidth});
+    this.setState({width: window.innerWidth});
   }
   
   openLightbox() {
@@ -87,26 +87,26 @@ class Photography extends React.Component {
 					]
 				};
 			});
-			if(flickrPhotos) {console.log(flickrPhotos);}
-			console.log("this is:", this);
+//			if(flickrPhotos) {console.log(flickrPhotos);}
+//			console.log("this is:", this);
   		this.setState({
   			photos: flickrPhotos,
-  		}, () => {if(this.state.photos) console.log('this.state.photos exists')});
-  		if(flickrPhotos) console.log(this.state.photos);
+  		});
+//  		if(flickrPhotos) console.log(this.state.photos);
     }).catch((err) => {
       console.log(err, 'oops, fetch failed');
       return;
     });
-		if(!this.state.photos) console.log(this.state.photos);
+//  if(!this.state.photos) console.log(this.state.photos);
   }
   
   //make the gallery modestly responsive
   scaleGallery() {
     let cols = 1;
-    if(this.width > 480) { cols = 2; }
-    if(this.width > 1024) { cols = 3; }
-    if(this.width > 1920) { cols = 4; }
-    return <PhotoGallery photos={this.state.photos} cols={cols} onClickPhoto={this.openLightbox} />;
+    if(this.state.width > 480) { cols = 2; }
+    if(this.state.width > 1024) { cols = 3; }
+    if(this.state.width > 1920) { cols = 4; }
+    return <PhotoGallery photos={this.state.photos} cols={cols} width={this.state.width} onClickPhoto={this.openLightbox} />;
   }
   
   render() {
