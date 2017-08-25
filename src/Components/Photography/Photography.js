@@ -1,6 +1,7 @@
 import React from 'react';
 import PhotoGallery from '../Gallery/PhotoGallery.js';
 import fetch from 'isomorphic-fetch';
+import '../../index.css';
 
 const radix = 10;
 
@@ -106,13 +107,15 @@ class Photography extends React.Component {
     if(this.state.width > 480) { cols = 2; }
     if(this.state.width > 1024) { cols = 3; }
     if(this.state.width > 1920) { cols = 4; }
+    console.log("just scaled cols to: ", cols);
     return <PhotoGallery photos={this.state.photos} cols={cols} width={this.state.width} onClickPhoto={this.openLightbox} />;
   }
   
   render() {
     if(this.state.photos) {
       return (
-        <div>
+        <div className="gallery">
+          <p>Current width: {this.state.width}</p>
           {this.scaleGallery()}
         </div>
       );

@@ -12,7 +12,7 @@ const popConfig = {stiffness: 360, damping: 25};
 const App = () => (
   <home className="App">
     <NavHeader />
-    <Route render={({location, history, match}) => {
+    <Route style={{margin: 0, padding: 0}} render={({location, history, match}) => {
       return (
         <RouteTransition  
           pathname={location.pathname} 
