@@ -114,7 +114,7 @@ class Photography extends React.Component {
   render() {
     if(this.state.photos) {
       return (
-        <div className="gallery">
+        <div className="transition-block">
           <p>Current width: {this.state.width}</p>
           {this.scaleGallery()}
         </div>
