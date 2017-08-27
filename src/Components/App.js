@@ -23,9 +23,9 @@ const App = () => (
           className="transition-anim"
         >  
           <Switch key = {location.key} location={location} className="temp">
-            <Route exact path="jyu_website/" component={Home} />
-            <Route exact path="jyu_website/resume" component={Resume} />
-            <Route exact path="jyu_website/photography" component={Photography} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/resume" component={Resume} />
+            <Route exact path="/photography" component={Photography} />
           </Switch>  
       </RouteTransition>
       );
@@ -46,17 +46,17 @@ const NavList = () => (
   <nav>
     <ul className="Nav-list">
       <li><NavLink 
-        to='jyu_website/'
+        to='/'
         className="nav"
         exact activeClassName="selected"
       >home</NavLink></li>
       <li><NavLink 
-        to='jyu_website/photography'
+        to='/photography'
         className="nav"
         activeClassName="selected"
       >photography</NavLink></li>
       <li><NavLink 
-        to='jyu_website/resume'
+        to='/resume'
         className="nav"
         activeClassName="selected"
       >resume</NavLink></li>
