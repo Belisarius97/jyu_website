@@ -24,7 +24,6 @@ class PhotoGallery extends React.Component {
       const rowWidth = (row.length < cols) ? Math.trunc((galleryWidth / cols) 
         * row.length - (row.length * (margin * 2))) : 
 				Math.trunc(galleryWidth - (row.length * (margin * 2)));
-			console.log("row width: ",  rowWidth);
 			const rowHeight = rowWidth / rowAspectRatio;
 			return row.map((photo) => ({
 			  ...photo,
@@ -40,15 +39,13 @@ class PhotoGallery extends React.Component {
     const margin = 3;
     style.margin = margin; //is there another way to do this that keeps these in sync?
     const photos = this.scalePhotos(margin);
-    console.log("gallery internal render just called", this.props.cols);
     return (
       <gallery>
         {photos.map((photo, index) => {
-          console.log("gallery putting in a photo now");
           return(
             <div key={index} style={style}>
             	<img src={photo.src} height={photo.height} width={photo.width} 
-              alt={photo.alt} onClick= {(e) => {this.props.onClickPhoto(index, e); console.log("photo clicked")}} 
+              alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(index, e)} 
               style={{display:'block', border:0, cursor: 'pointer'}}/>
             </div>
           );

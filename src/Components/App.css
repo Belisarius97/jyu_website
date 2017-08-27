@@ -36,16 +36,21 @@ padding:0;
   justify-content: center;
 }
 
-/*Link styles --------------------------------------------------- */
-a {
-
+li {
+  margin-right: 3%;
+  margin-left: 3%;
 }
+
+/*Link styles --------------------------------------------------- */
+
 a.nav:link {
+  float: left;
   display:block;
   color: white;
   text-decoration: none;
   font-weight: 600;
-  margin: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 a.nav:visited { color: white; }
