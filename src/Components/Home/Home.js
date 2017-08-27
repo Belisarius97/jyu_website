@@ -1,9 +1,9 @@
 import React from 'react';
-import profPic from '../../Assets/profpic1.jpg'
+import profPic from '../../Assets/profpic1.jpg';
 
 const imgDiam = "250"
 
-const bio = `I'm fond of curling up with tea and a good book, going on a 
+const bio = `I'm fond of spending my time with tea and a good book, going on a 
   photography adventure, and coding up side projects. Lover of literature,
   policy, technology, music, and pretty things generally. I code, write a 
   little, read a lot, dance far more than I should.`

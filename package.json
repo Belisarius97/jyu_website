@@ -2,7 +2,7 @@
   "name": "jyu_belisarius",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Belisarius97.github.io/",
+  "homepage": "https://Belisarius97.github.io/jyu_website",
   "dependencies": {
     "es6-promise": "^4.1.1",
     "gh-pages": "^1.0.0",
