@@ -1,12 +1,3 @@
-//I want this to map over a folder of photos and automatically generate
-//the requisite "photo" elements for each one, and display all of them
-//ideally also a connected animation to transition to this page
-
-//built out basic design: gaussian-blurred and darkened image backdrop,
-//centered large-font name, square tile sections which animate nicely to take
-//to the different pages. We can use a different branch for that; this one's
-//going to be fairly basic
-
 import React from 'react';
 
 class PhotoGallery extends React.Component {
@@ -21,7 +12,6 @@ class PhotoGallery extends React.Component {
     console.log("gallery width: ", galleryWidth);
     
     let rows = photos.reduce((row,elem,index) => {
-//      console.log("gallery reduce", row, elem, index);
       const rowIndex = Math.trunc(index/cols);
       row[rowIndex] = row[rowIndex] ? [...row[rowIndex], elem] : [elem];
       return row;
@@ -57,8 +47,9 @@ class PhotoGallery extends React.Component {
           console.log("gallery putting in a photo now");
           return(
             <div key={index} style={style}>
-              <img src={photo.url} height={photo.height} width={photo.width} 
-              alt={photo.alt} style={{display:'block', border:0}}/>
+            	<img src={photo.src} height={photo.height} width={photo.width} 
+              alt={photo.alt} onClick= {(e) => {this.props.onClickPhoto(index, e); console.log("photo clicked")}} 
+              style={{display:'block', border:0, cursor: 'pointer'}}/>
             </div>
           );
         })}
@@ -74,7 +65,7 @@ PhotoGallery.defaultProps = {
 	},
 };
 
-//I am not keeping yet another CSS stylesheet (experiment w/ removing blocK?)
+//I am not keeping yet another CSS stylesheet
 const style = {
 	display: 'block',
 	float: 'left'

@@ -1,5 +1,6 @@
 import React from 'react';
 import PhotoGallery from '../Gallery/PhotoGallery.js';
+import Lightbox from 'react-images';
 import fetch from 'isomorphic-fetch';
 import '../../index.css';
 
@@ -13,12 +14,15 @@ class Photography extends React.Component {
       photos: null,
       lightboxOn: false,
       width: 0,
+      currentPhoto: 1,
     };
     
     this.updateWidth = this.updateWidth.bind(this);
     this.openLightbox = this.openLightbox.bind(this);
     this.closeLightbox = this.closeLightbox.bind(this);
     this.loadPhotos = this.loadPhotos.bind(this);
+    this.nextPhoto = this.nextPhoto.bind(this);
+    this.prevPhoto = this.prevPhoto.bind(this);
   }
   
   componentDidMount() {
@@ -35,9 +39,11 @@ class Photography extends React.Component {
     this.setState({width: window.innerWidth});
   }
   
-  openLightbox() {
+  openLightbox(photoIndex, event) {
+    event.preventDefault();
     this.setState({
       lightboxOn: true,
+      currentPhoto: photoIndex,
     });
   }
   
@@ -45,6 +51,14 @@ class Photography extends React.Component {
     this.setState({
       lightboxOn: false,
     });
+  }
+  
+  nextPhoto() {
+    this.setState({ currentPhoto: this.state.currentPhoto + 1, });
+  }
+  
+  prevPhoto() {
+    this.setState({ currentPhoto: this.state.currentPhoto - 1, });
   }
   
   loadPhotos() {
@@ -69,7 +83,7 @@ class Photography extends React.Component {
     //customize this as needed later
 				let aspectRatio = parseFloat(photo.width_o / photo.height_o);
 				return {
-					url: (aspectRatio >= 3) ? photo.url_c : photo.url_m,
+					src: (aspectRatio >= 3) ? photo.url_c : photo.url_m,
 					width: parseInt(photo.width_o, radix),
 					height: parseInt(photo.height_o, radix),
 					caption: photo.title,
@@ -111,7 +125,15 @@ class Photography extends React.Component {
       return (
         <div className="transition-block">
           {this.scaleGallery()}
-          <Lightbox lightboxOn={this.state.openLightbox} onClick={this.closeLightbox} src={this.state.url} />
+          <Lightbox 
+            images={this.state.photos}
+            currentImage={this.state.currentPhoto}
+            isOpen={this.state.lightboxOn} 
+            onClose={this.closeLightbox} 
+            backdropClosesModal={true} 
+            enableKeyboardInput={true}
+            onClickPrev={this.prevPhoto}
+						onClickNext={this.nextPhoto}/>
         </div>
       );
     } else {
