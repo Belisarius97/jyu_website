@@ -13,7 +13,6 @@ class Photography extends React.Component {
       photos: null,
       lightboxOn: false,
       width: 0,
-      //url?
     };
     
     this.updateWidth = this.updateWidth.bind(this);
@@ -88,17 +87,13 @@ class Photography extends React.Component {
 					]
 				};
 			});
-//			if(flickrPhotos) {console.log(flickrPhotos);}
-//			console.log("this is:", this);
   		this.setState({
   			photos: flickrPhotos,
   		});
-//  		if(flickrPhotos) console.log(this.state.photos);
     }).catch((err) => {
       console.log(err, 'oops, fetch failed');
       return;
     });
-//  if(!this.state.photos) console.log(this.state.photos);
   }
   
   //make the gallery modestly responsive
@@ -115,8 +110,8 @@ class Photography extends React.Component {
     if(this.state.photos) {
       return (
         <div className="transition-block">
-          <p>Current width: {this.state.width}</p>
           {this.scaleGallery()}
+          <Lightbox lightboxOn={this.state.openLightbox} onClick={this.closeLightbox} src={this.state.url} />
         </div>
       );
     } else {

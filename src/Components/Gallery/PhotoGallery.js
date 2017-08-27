@@ -53,9 +53,6 @@ class PhotoGallery extends React.Component {
     console.log("gallery internal render just called", this.props.cols);
     return (
       <gallery>
-        <div>
-          <p>placeholder, pardon the dust</p>
-        </div>
         {photos.map((photo, index) => {
           console.log("gallery putting in a photo now");
           return(
