@@ -37,16 +37,15 @@ class PhotoGallery extends React.Component {
   
   render() {
     const margin = 3;
-    style.margin = margin; //is there another way to do this that keeps these in sync?
     const photos = this.scalePhotos(margin);
     return (
       <gallery>
         {photos.map((photo, index) => {
           return(
-            <div key={index} style={style}>
+            <div key={index} style={{display: 'block', float: 'left', margin: margin}}>
             	<img src={photo.src} height={photo.height} width={photo.width} 
               alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(index, e)} 
-              style={{display:'block', border:0, cursor: 'pointer'}}/>
+              style={photoStyle}/>
             </div>
           );
         })}
@@ -63,9 +62,10 @@ PhotoGallery.defaultProps = {
 };
 
 //I am not keeping yet another CSS stylesheet
-const style = {
+const photoStyle = {
 	display: 'block',
-	float: 'left'
+	border: 0,
+	cursor: 'pointer',
 };
 
 

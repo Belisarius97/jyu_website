@@ -133,7 +133,9 @@ class Photography extends React.Component {
             backdropClosesModal={true} 
             enableKeyboardInput={true}
             onClickPrev={this.prevPhoto}
-						onClickNext={this.nextPhoto}/>
+						onClickNext={this.nextPhoto}
+						showImageCount={false}
+						width={this.width}/>
         </div>
       );
     } else {
