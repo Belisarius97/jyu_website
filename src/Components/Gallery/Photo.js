@@ -7,26 +7,64 @@ class Photo extends React.Component {
     this.state = {
       isHover: false,
     };
-    this.onHover = this.animHover.bind(this);
+    this.onHover = this.onHover.bind(this);
+    this.offHover = this.offHover.bind(this);
   }
   
-  onHover() {
-    this.setState({isHover: true});
-  }
+  onHover() { this.setState({isHover: true}); }
+  offHover() { this.setState({isHover: false}); }
   
+  makeSpringStyle() {
+    return {
+      scale: spring(this.state.isHover ? 1.10 : 1),
+      opacity: spring(this.state.isHover ? 0.2 : 0),
+      left: spring(this.state.isHover ? 10 : 0),
+      captionOpacity: spring(this.state.isHover ? 1 : 0)
+    };
+  }
+
   render() {
     const photo = this.props.photo;
+    console.log("props photo: ", photo);
     return (
-      <Motion style={springStyle}>
-        <photoWrapper>
-          <img src={photo.src} height={photo.height} width={photo.width} 
-            alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(this.props.index, e)} 
-            style={photoStyle}/>
-          <div className="overlay">
-            <caption className="caption">{photo.alt}</caption>
-          </div>
-        </photoWrapper>
-      </Motion>
+      <image>
+        <Motion style={this.makeSpringStyle()} >
+          {interpolatingStyles => {
+          
+            let picStyle = { 
+              transform: 'scale(' + interpolatingStyles.scale + ')',
+              display: 'block',
+              float: 'left',
+              margin: this.props.margin,
+            };
+            
+            let overlayStyle = {
+              opacity: interpolatingStyles.opacity,
+              cursor: 'pointer',
+            };
+            
+            let captionStyle = {
+              position: 'absolute',
+              bottom: '25%',
+              left: interpolatingStyles.left + '%',
+              opacity: interpolatingStyles.captionOpacity,
+            };
+            
+            return (
+              <photoWrapper 
+              onMouseOver={this.onHover} onMouseOut={this.offHover}
+              style = {picStyle}>
+                <img src={photo.src} height={photo.height} width={photo.width} 
+                  alt={photo.alt} style={photoStyle}/>
+                <div className="overlay" style={overlayStyle}
+                onClick= {(e) => this.props.onClickPhoto(this.props.index, e)}>
+                </div>
+                <div className="caption" style={captionStyle}>{photo.alt}</div>
+              </photoWrapper>
+            );
+          }}
+        </Motion>
+      </image>
     );
   }
 }
@@ -34,12 +72,8 @@ class Photo extends React.Component {
 const photoStyle = {
 	display: 'block',
 	border: 0,
-	cursor: 'pointer',
 };
 
-const springStyle = {
-    scale: spring(this.state.isHover ? 1.15 : 1),
-    
-};
+
 
 export default Photo;

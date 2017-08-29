@@ -1,4 +1,5 @@
 import React from 'react';
+import Photo from './Photo.js';
 
 class PhotoGallery extends React.Component {
   // constructor(props) {
@@ -42,17 +43,20 @@ class PhotoGallery extends React.Component {
       <gallery>
         {photos.map((photo, index) => {
           return(
-            <div key={index} style={{display: 'block', float: 'left', margin: margin}}>
-            	<img src={photo.src} height={photo.height} width={photo.width} 
-              alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(index, e)} 
-              style={photoStyle}/>
-            </div>
+            <Photo photo={photo} index={index} margin={margin} key={index} 
+            onClickPhoto={this.props.onClickPhoto}/>
           );
         })}
       </gallery>
     );
   }
 }
+
+            // <div key={index} style={{display: 'block', float: 'left', margin: margin}}>
+            // 	<img src={photo.src} height={photo.height} width={photo.width} 
+            //   alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(index, e)} 
+            //   style={photoStyle}/>
+            // </div>
 
 PhotoGallery.defaultProps = {
 	cols: 3, 
@@ -62,11 +66,11 @@ PhotoGallery.defaultProps = {
 };
 
 //I am not keeping yet another CSS stylesheet
-const photoStyle = {
-	display: 'block',
-	border: 0,
-	cursor: 'pointer',
-};
+// const photoStyle = {
+// 	display: 'block',
+// 	border: 0,
+// 	cursor: 'pointer',
+// };
 
 
 export default PhotoGallery;
