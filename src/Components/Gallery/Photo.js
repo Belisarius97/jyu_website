@@ -17,9 +17,16 @@ class Photo extends React.Component {
   render() {
     const photo = this.props.photo;
     return (
-      <img src={photo.src} height={photo.height} width={photo.width} 
-        alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(this.props.index, e)} 
-        style={photoStyle}/>
+      <Motion style={springStyle}>
+        <photoWrapper>
+          <img src={photo.src} height={photo.height} width={photo.width} 
+            alt={photo.alt} onClick= {(e) => this.props.onClickPhoto(this.props.index, e)} 
+            style={photoStyle}/>
+          <div className="overlay">
+            <caption className="caption">{photo.alt}</caption>
+          </div>
+        </photoWrapper>
+      </Motion>
     );
   }
 }
@@ -28,6 +35,11 @@ const photoStyle = {
 	display: 'block',
 	border: 0,
 	cursor: 'pointer',
+};
+
+const springStyle = {
+    scale: spring(this.state.isHover ? 1.15 : 1),
+    
 };
 
 export default Photo;
