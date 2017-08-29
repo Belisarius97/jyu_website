@@ -9,6 +9,7 @@ class Photo extends React.Component {
     };
     this.onHover = this.onHover.bind(this);
     this.offHover = this.offHover.bind(this);
+    this.makeSpringStyle = this.makeSpringStyle.bind(this);
   }
   
   onHover() { this.setState({isHover: true}); }
@@ -19,23 +20,33 @@ class Photo extends React.Component {
       scale: spring(this.state.isHover ? 1.10 : 1),
       opacity: spring(this.state.isHover ? 0.2 : 0),
       left: spring(this.state.isHover ? 10 : 0),
-      captionOpacity: spring(this.state.isHover ? 1 : 0)
+      captionOpacity: spring(this.state.isHover ? 1 : 0),
+      shadowOpacity: spring(this.state.isHover ? .5 : 0)
     };
+  }
+  
+  setDepth() {
+    if(this.state.isHover) {
+      return 10;
+    }
   }
 
   render() {
     const photo = this.props.photo;
     console.log("props photo: ", photo);
     return (
-      <image>
+      <image style={{position: 'relative', zIndex: this.setDepth()}}>
         <Motion style={this.makeSpringStyle()} >
           {interpolatingStyles => {
-          
             let picStyle = { 
+              position: 'static',
               transform: 'scale(' + interpolatingStyles.scale + ')',
               display: 'block',
               float: 'left',
               margin: this.props.margin,
+              boxShadow: '0 4px 8px 0 rgba(0, 0, 0,' + interpolatingStyles.shadowOpacity
+              + '), 0 6px 20px 0 rgba(0, 0, 0, ' + interpolatingStyles.shadowOpacity
+              + '0.19)',
             };
             
             let overlayStyle = {
