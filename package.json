@@ -2,7 +2,7 @@
   "name": "jyu_belisarius",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://JonathonYu.github.io/",
+  "homepage": "https://JonathonYu.github.io/website",
   "dependencies": {
     "es6-promise": "^4.1.1",
     "gh-pages": "^1.0.0",
