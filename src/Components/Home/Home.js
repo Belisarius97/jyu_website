@@ -25,7 +25,7 @@ const Home = () => (
       for me to put it here.
     </p>
     <br/>
-    <p>You can find my code <a href="https://github.com/Belisarius97">here</a>.</p>
+    <p>You can find my code <a href="https://github.com/JonathonYu">here</a>.</p>
   </home>
 )
     
